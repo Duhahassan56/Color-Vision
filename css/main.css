@@ -1,0 +1,87 @@
+/* COLOR VISION — shared site styles */
+/* Theme colors, fonts and reusable sizing tokens */
+:root {
+  --background: #e8e3c3;
+  --paper: #fff6de;
+  --text: #4e3b2b;
+  --orange: #ce4a1c;
+  --teal: #0c8d90;
+  --yellow: #dea937;
+  --black: #000;
+  --font: 'Bricolage Grotesque', Arial, sans-serif;
+  --content-width: 1328px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--background); color: var(--text); font-family: var(--font); }
+button, input { font: inherit; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; }
+
+/* Shared responsive content width */
+.container { width: min(calc(100% - 64px), var(--content-width)); margin-inline: auto; }
+
+/* Reusable heavy shadow */
+.shadow-box { background: var(--paper); border: 3px solid var(--black); box-shadow: 12px 12px 0 var(--black); }
+.button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 10px 25px; border: 2px solid var(--black); background: var(--teal); color: var(--paper); font-weight: 700; box-shadow: 8px 8px 0 var(--black); transition: transform .15s, box-shadow .15s; }
+.button:hover { transform: translate(2px,2px); box-shadow: 6px 6px 0 var(--black); }
+.button:focus-visible, a:focus-visible, button:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+
+
+/* Shared navbar, active link is highlighted yellow */
+.site-header { padding-top: 20px; }
+.navbar { min-height: 76px; padding: 12px 25px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+.brand { font-size: clamp(24px, 2.8vw, 40px); font-weight: 800; white-space: nowrap; }
+.brand span { color: var(--orange); }
+.nav-links { display: flex; align-items: center; gap: clamp(12px, 2vw, 26px); }
+.nav-links a { font-size: clamp(13px, 1.2vw, 19px); white-space: nowrap; }
+.nav-links .active { padding: 7px 9px; border: 2px solid var(--black); background: var(--yellow); box-shadow: 3px 3px 0 var(--black); font-weight: 700; }
+.menu-toggle { display: none; background: transparent; border: 0; font-size: 26px; }
+
+
+/* Shared footer */
+.site-footer { margin-top: 85px; border-top: 2px solid var(--black); padding: 35px 0 18px; }
+.footer-content { display: flex; justify-content: space-between; align-items: center; gap: 25px; }
+.footer-brand { font-size: clamp(28px, 3.5vw, 54px); }
+.footer-content p { margin: 2px 0; font-size: 17px; }
+.footer-links { display: flex; flex-wrap: wrap; align-items: center; }
+.footer-links a { padding: 4px 13px; font-size: 15px; border-right: 1px solid var(--black); }
+.footer-links a:last-child { border-right: 0; }
+.footer-links a:hover, .nav-links a:not(.active):hover { color: var(--orange); }
+.footer-note { text-align: center; font-size: 13px; margin: 45px 12px 0; }
+
+
+/* Tablet and smaller laptop  */
+@media (max-width: 950px) {
+  .container { width: min(calc(100% - 40px), var(--content-width)); }
+  .navbar { padding: 12px 18px; }
+  .nav-links { gap: 10px; }
+  .footer-content { align-items: flex-start; }
+  .footer-links { justify-content: flex-end; }
+}
+@media (max-width: 680px) {
+  .container { width: calc(100% - 32px); }
+  .navbar { flex-wrap: wrap; }
+  .menu-toggle { display: block; }
+  .nav-links { display: none; width: 100%; flex-direction: column; align-items: stretch; gap: 2px; padding-top: 12px; }
+  .nav-links.is-open { display: flex; }
+  .nav-links a { padding: 9px 12px; font-size: 16px; }
+  .nav-links .active { box-shadow: none; }
+  .footer-content { flex-direction: column; gap: 18px; }
+  .footer-links { justify-content: flex-start; }
+  .footer-links a { font-size: 13px; padding: 4px 8px; }
+  .footer-note { margin-top: 30px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .button { transition: none; } }
+
+/* Accessibility and navigation active state */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.nav-links a[aria-current="page"] { padding: 7px 9px; border: 2px solid var(--black); background: var(--yellow); box-shadow: 3px 3px 0 var(--black); font-weight: 700; }
+@media (max-width: 680px) { .nav-links a[aria-current="page"] { box-shadow: none; } }
+
+/* Stronger neo-brutalist shadows on smaller screens */
+@media (max-width: 680px) {
+  .shadow-box { box-shadow: 7px 7px 0 var(--black); }
+  .button { box-shadow: 6px 6px 0 var(--black); }
+  .button:hover { box-shadow: 4px 4px 0 var(--black); }
+}

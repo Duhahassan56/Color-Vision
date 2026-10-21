@@ -1,0 +1,160 @@
+
+/* Hero section */
+.hero { min-height: 460px; padding: 80px 30px 65px; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 35px; align-items: center; }
+.hero-copy h1 { margin: 0 0 20px; font-size: clamp(32px, 3.7vw, 52px); line-height: 1.14; }
+.hero-copy p { max-width: 640px; margin: 0 0 35px; font-size: clamp(17px, 1.8vw, 24px); line-height: 1.45; }
+.hero .button { font-size: clamp(17px, 2vw, 27px); min-width: 205px; }
+.hero-art { display: block; width: min(100%, 520px); height: auto; object-fit: contain; margin: auto; }
+
+
+/* how-it-works section */
+.steps-section { 
+  /* use varibale in main.css file */
+   background-color: var(--orange);
+   /* makes the lines */
+   background-image: linear-gradient(rgba(80, 35, 18, .20) 2px, transparent 2px), linear-gradient(90deg, rgba(80, 35, 18, .20) 2px, transparent 2px);
+   /* let the lines in loop */
+   background-size: 55px 55px; padding: 60px 0 85px; }
+.steps-section h2 { text-align: center; color: var(--paper); font-size: clamp(28px, 3vw, 42px); margin: 0 0 54px; }
+.steps-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: clamp(20px, 4vw, 65px); max-width: 1120px; margin: auto; }
+/* cards style */
+.step-card { position: relative; min-height: 270px; padding: 70px 16px 22px; text-align: center; }
+.step-number { position: absolute; top: 16px; left: 16px; width: 52px; height: 38px; display: grid; place-items: center; background: var(--yellow); border: 3px solid #000; border-radius: 0; font-weight: 800; font-size: 22px; }
+.step-icon { display: block; width: 90px; height: 90px; object-fit: contain; margin: 0 auto; }
+.step-card h3 { font-size: clamp(20px, 2vw, 28px); margin: 10px 0; }
+.step-card p { margin: 0 auto; max-width: 250px; font-size: 16px; line-height: 1.35; }
+
+
+/* Upload area and image canvas */
+.picker-section { position: relative; padding: 72px 24px 0; }
+.picker-section h2 { font-size: clamp(35px, 4vw, 58px); margin: 0 0 26px; }
+.upload-zone { min-height: 430px; display: grid; place-items: center; padding: 35px; text-align: center; transition: background-color .15s; }
+/* drag image */
+.upload-zone.is-dragging { background: #e8f9f3;
+   /* change the aria color when image is draged */ 
+   outline: 4px dashed var(--teal);
+    outline-offset: -13px; }
+/* berofe upload image */
+.upload-empty { display: flex; flex-direction: column; align-items: center; }
+.upload-symbol { display: block; width: clamp(115px, 13vw, 180px); height: auto; object-fit: contain; }
+.upload-empty p { margin: 25px 0 15px; font-size: clamp(24px, 2.2vw, 32px); }
+.upload-empty small { margin-top: 13px; font-size: 13px; }
+/* after upload image */
+.image-workspace { width: 100%; }
+.image-workspace[hidden], .upload-empty[hidden] { display: none; }
+.workspace-instruction { font-weight: 700; margin: 0 0 20px; }
+/* canvas */
+#image-canvas { display: block; max-width: 100%; max-height: 480px; height: auto; margin: auto;
+  /* change the pointer */
+   cursor: crosshair;
+   border: 2px solid #000; }
+.workspace-actions { display: flex; justify-content: center; align-items: center; gap: 30px; flex-wrap: wrap; margin-top: 22px; }
+#selected-color { font-weight: 700; }
+
+/* Recent color cards */
+.recent-section { padding-top: 48px; }
+.recent-section h3 { font-size: clamp(25px, 2.5vw, 36px); margin: 0 0 18px; }
+.color-list { display: grid; gap: 16px; }
+.color-row { min-height: 72px; display: grid; grid-template-columns: 55px minmax(120px, 1fr) minmax(145px, 1fr) minmax(190px, 1.2fr); gap: 18px; align-items: center; padding: 10px 20px; font-size: clamp(14px, 1.25vw, 18px); }
+.color-swatch { height: 46px; width: 46px; background: var(--swatch); border: 2px solid #000; }
+/* for span children items, "not" for class color-swatch  */
+.color-row > span:not(.color-swatch) { white-space: nowrap; }
+.copy-button { border: 0; background: none; padding: 3px; font-size: 25px; vertical-align: middle; }
+.copy-button:hover { color: var(--orange); }
+
+/* media for laptops/computers */
+@media (max-width: 1050px) {
+  .hero { padding: 65px 15px; min-height: 375px; }
+  .steps-grid { gap: 20px; }
+  .color-row { grid-template-columns: 52px minmax(100px, 1fr) minmax(130px, 1fr) minmax(165px, 1fr); gap: 12px; padding: 12px; }
+  .color-swatch { width: 48px; height: 48px; }
+}
+/* media for ipads */
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; padding: 55px 8px; text-align: center; gap: 24px; }
+  .hero-copy p { margin-inline: auto; }
+  .hero-art { max-width: 300px; }
+  .steps-grid { grid-template-columns: 1fr; max-width: 400px; gap: 24px; }
+  .step-card { min-height: 230px; padding-top: 55px; }
+  .step-icon { width: 75px; height: 75px; }
+  .picker-section { padding: 55px 6px 0; }
+  .upload-zone { min-height: 340px; padding: 25px 15px; }
+  .color-row { grid-template-columns: 44px 1fr; gap: 10px 14px; font-size: 14px; }
+  .color-swatch { grid-row: span 3; width: 42px; height: 42px; align-self: start; }
+  .color-row > span:not(.color-swatch) { white-space: normal; }
+}
+/* media for phones */
+@media (max-width: 420px) {
+  .hero-copy h1 { font-size: 30px; }
+  .upload-empty p { font-size: 19px; }
+  .upload-symbol { width: 110px; }
+  .picker-section h2 { font-size: 32px; }
+}
+
+/* Image-loaded layout */
+.image-workspace { width: 100%; }
+.workspace-heading { width: min(100%, 850px); margin: 0 auto 16px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.workspace-instruction { margin: 0; font-size: clamp(13px, 1.15vw, 17px); font-weight: 400; text-align: left; }
+.workspace-heading .button { min-height: 50px; padding: 9px 21px; font-size: clamp(17px, 1.55vw, 22px); white-space: nowrap; }
+.canvas-wrap { display: flex; justify-content: center; align-items: center; width: 100%; }
+#image-canvas { display: block; width: auto; max-width: 100%; max-height: 445px; height: auto; margin: 0 auto; border: 0; cursor: crosshair; }
+
+@media (max-width: 680px) { .workspace-heading { flex-direction: column-reverse; align-items: stretch; } .workspace-heading .button { align-self: flex-end; } .workspace-instruction { text-align: center; } }
+
+/* Keep the upload button as readable as the hero button */
+.upload-empty > .button { min-height: 54px; padding: 10px 26px; font-size: clamp(18px, 1.7vw, 23px); }
+
+/* Three compact color rows, shadows remain visually prominent */
+@media (max-width: 1050px) and (min-width: 761px) {
+  .color-row { min-height: 72px; grid-template-columns: 52px minmax(100px, 1fr) minmax(130px, 1fr) minmax(165px, 1fr); gap: 12px; padding: 10px 14px; }
+  .color-swatch { width: 42px; height: 42px; }
+}
+@media (max-width: 760px) {
+  .color-row { min-height: unset; grid-template-columns: 44px minmax(0, 1fr); padding: 12px 15px; }
+  .color-swatch { width: 38px; height: 38px; }
+  .workspace-heading .button { font-size: 17px; }
+}
+
+/* Selected-color popup, positioned near the actual click via JavaScript */
+.color-popup { position: absolute; z-index: 30; width: 215px; padding: 12px 14px; text-align: left; font-size: 13px; line-height: 1.35; pointer-events: auto; }
+.color-popup[hidden] { display: none; }
+.popup-swatch { height: 22px; border: 2px solid #000;
+  /* use variable popup-color, if you can't find it, use #800020 */
+   background: var(--popup-color, #800020);
+   margin-bottom: 6px; }
+.color-popup > strong { display: block; margin-bottom: 6px; font-size: 15px; }
+.popup-value { display: flex; align-items: center; justify-content: space-between; gap: 5px; font-size: 12px; }
+.popup-value .copy-button { padding: 0 3px; font-size: 18px; line-height: 1; }
+
+/* Empty state */
+.recent-empty { min-height: 195px; padding: 30px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; color: #7b776e; }
+.recent-empty strong { font-size: clamp(20px, 2vw, 27px); color: #79756d; }
+.recent-empty p { margin: 0; font-size: clamp(14px, 1.25vw, 17px); color: #89857e; }
+.recent-empty-swatches { display: flex; align-items: center; margin-bottom: 5px; padding-right: 10px; }
+/* the 3 colored blockes */
+.recent-empty-swatches span { display: block; width: 30px; height: 30px; border: 2px solid #000; box-shadow: 3px 3px 0 #000; }
+/* (+) makes the blockes inside eachother */
+.recent-empty-swatches span + span { margin-left: -5px; }
+/* chose the 1st block, 2ed, 3rd block */
+.recent-empty-swatches span:nth-child(1) { background: var(--orange);
+ /* lean the blocks slightly  */
+transform: rotate(-12deg); }
+.recent-empty-swatches span:nth-child(2) { background: var(--teal); transform: rotate(4deg); }
+.recent-empty-swatches span:nth-child(3) { background: var(--yellow); transform: rotate(13deg); }
+/* Popup close icon */
+.popup-top { display: flex; align-items: start; gap: 7px; margin-bottom: 6px; }
+.popup-top .popup-swatch { flex: 1; margin: 0; }
+.popup-close { border: 0; background: none; color: #000; cursor: pointer; padding: 0; width: 18px; height: 22px; font: 700 23px/20px Arial, sans-serif; }
+.popup-close:hover { background: none; color: #000; }
+.popup-close:focus-visible { outline: 2px solid #000; outline-offset: 2px; }
+
+@media (max-width: 680px) { .color-popup { width: min(215px, calc(100vw - 24px)); } }
+
+/* Copy action icons in popup */
+.copy-button { display: inline-flex; align-items: center; justify-content: center; cursor: pointer; line-height: 1; }
+.copy-button img { display: block; width: 21px; height: 21px; object-fit: contain; }
+.popup-value .copy-button img { width: 17px; height: 17px; }
+.copy-button:hover img { opacity: 0.7; }
+
+/* keep the original icon visible after click it */
+.copy-button.copy-success img { opacity: 0.6; }

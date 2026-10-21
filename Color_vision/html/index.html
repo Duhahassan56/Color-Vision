@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Vision | Home</title>
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/home.css">
+  <script src="../js/home.js" defer></script>
+</head>
+<body>
+  <!-- nav -->
+  <header class="site-header container">
+        <nav class="navbar shadow-box" aria-label="Main navigation">
+		    <!-- logo -->
+            <a class="brand" href="index.html"><span>Color</span> Vision</a>
+	        <!-- burger menu -->
+            <button class="menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <div class="nav-links" id="nav-links">
+		        <!-- active btn -->
+                <a class="active" href="index.html" aria-current="page">Home</a>
+                <a href="color-tools.html">Color Tools</a>
+                <a href="color-guide.html">Color Guide</a>
+                <a href="about.html">About</a>
+           </div>
+       </nav>
+  </header>
+
+  <main>
+        <!-- Hero -->
+        <section class="hero container" aria-labelledby="hero-title">
+            <div class="hero-copy">
+                <h1 id="hero-title">Pick It. Name It. Save It.</h1>
+                <p>Choose any color from an image and instantly get its name, HEX, and RGB.</p>
+                <a class="button" href="#start-picking">Try it now</a>
+           </div>
+           <img class="hero-art" src="../contact/images/home_hero_img.png" alt="Color picking illustration" />
+        </section>
+
+        <!-- How it works: the cards -->
+        <section class="steps-section" aria-labelledby="steps-title">
+            <div class="container">
+                <h2 id="steps-title">Ready, Pick, Discover</h2>
+                <div class="steps-grid">
+			        <!-- card 1 -->
+                    <article class="step-card shadow-box">
+                        <span class="step-number">01</span>
+			            <img class="step-icon" src="../contact/icons/upload.png" aria-hidden="true">
+                        <h3>Upload an Image</h3>
+			            <p>Choose an image from your device</p>
+                    </article>
+		            <!-- card 2 -->
+                    <article class="step-card shadow-box">
+                        <span class="step-number">02</span>
+			            <img class="step-icon" src="../contact/icons/droplet.png" aria-hidden="true">
+                        <h3>Pick a Color</h3>
+			            <p>Click anywhere on the image</p>
+                    </article>
+		            <!-- card 3 -->
+                    <article class="step-card shadow-box">
+                        <span class="step-number">03</span>
+			            <img class="step-icon" src="../contact/icons/color-palette.png" aria-hidden="true">
+                        <h3>Get the Details</h3>
+			            <p>View the color name, HEX, and RGB</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Color picker -->
+        <section class="picker-section container" id="start-picking" aria-labelledby="picker-title">
+            <h2 id="picker-title">Start Picking</h2>
+            <div class="upload-zone shadow-box" id="drop-zone">
+		        <!-- before upload -->
+                <div class="upload-empty" id="upload-empty">
+                    <img class="upload-symbol" src="../contact/icons/upolad_img.png" alt="" aria-hidden="true">
+                    <!-- &amp; == & -->
+                    <p><strong>Drag &amp; drop an image here</strong><br>or</p>
+                    <button class="button" type="button" id="upload-button">Upload Image</button>
+                    <small>JPG, PNG or WebP</small>
+                </div>
+                <!-- after upload,JS hide uplaod-empty -->
+                <div class="image-workspace" id="image-workspace" hidden> 
+                    <div class="workspace-heading">
+                        <p class="workspace-instruction">Click anywhere on the image to pick a color</p>
+                        <button class="button" type="button" id="change-image">Upload New Image</button>
+                   </div>
+                   <!-- canvas for JS -->
+                   <div class="canvas-wrap">
+			            <!-- read colors by canvas -->
+                        <canvas id="image-canvas" aria-label="Uploaded image for selecting a color"></canvas>
+                   </div>
+                        <p id="selected-color" class="sr-only" role="status" aria-live="polite">Select a color from the image</p>
+                </div>
+		        <!-- img types that allowed -->
+                <input id="image-input" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+           </div>
+
+           <!-- Color details popup -->
+           <div class="color-popup shadow-box" id="color-popup" hidden aria-label="Selected color details">
+                <div class="popup-top">
+			        <!-- styled in CSS -->
+			        <div class="popup-swatch" id="popup-swatch"></div>
+			        <button type="button" class="popup-close" id="popup-close" aria-label="Close color details" title="Close">×</button>
+		        </div>
+		        <!-- popup info "ft. JS"-->
+                <strong id="popup-name">Burgundy</strong>
+                <div class="popup-value"><span>HEX: <b id="popup-hex"></b></span>
+			        <button type="button" class="copy-button" id="popup-copy-hex" aria-label="Copy HEX value" title="Copy HEX">
+				    <img src="../contact/icons/copy_icon.png" aria-hidden="true"></button>
+		       </div>
+               <div class="popup-value"><span>RGB: <b id="popup-rgb"></b></span>
+			        <button type="button" class="copy-button" id="popup-copy-rgb" aria-label="Copy RGB value" title="Copy RGB">
+				    <img src="../contact/icons/copy_icon.png" aria-hidden="true"></button>
+		       </div>
+           </div>
+           <!-- Recent colors "empty" -->
+           <div class="recent-section">
+                <h3>Recent Colors</h3>
+                <div class="color-list" id="color-list" aria-live="polite">
+                    <div class="recent-empty">
+			            <!-- empty colors icon "made in CSS" -->
+		                <div class="recent-empty-swatches" aria-hidden="true">
+			                <span></span>
+			                <span></span>
+			                <span></span>
+		                </div>
+		                <strong>A Splash of Color?</strong>
+		                <p>Pick a color from any image, and your last three colors will appear here.</p>
+	                </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--  footer -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div>
+		        <a class="brand footer-brand" href="index.html"><span>Color</span> Vision</a>
+		        <p>see colors a little differently</p>
+	        </div>
+            <nav class="footer-links" aria-label="Footer navigation">
+		        <a href="index.html">Home</a>
+		        <a href="color-tools.html">Color Tools</a>
+		        <a href="color-guide.html">Color Guide</a>
+		        <a href="about.html">About</a>
+	        </nav>
+        </div>
+        <p class="footer-note">Built as a Server-Side 2 university Project</p>
+    </footer>
+</body>
+</html>

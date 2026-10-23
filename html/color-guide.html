@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Guide | Color Vision</title>
+  <link rel="stylesheet" href="../css/color-guide.css">
+ <script src="../js/color-guide.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="index.html">Color Vision</a>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="color-tools.html">Color Tools</a>
+      <a class="active" aria-current="page" href="color-guide.html">Color Guide</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <h1><span>Color</span> Guide</h1>
+      <p>Browse colors, search by name, and explore HEX and RGB values.</p>
+    </section>
+
+    <section class="controls" aria-label="Search and filter colors">
+      <label class="search-wrap"><span class="sr-only">Search colors</span><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search a color..." autocomplete="off"></label>
+      <label><span class="sr-only">Filter by color</span><select id="color-filter"><option value="all">All Colors</option><option value="blue">Blue</option><option value="pink">Pink</option><option value="purple">Purple</option><option value="yellow">Yellow</option><option value="green">Green</option><option value="orange">Orange</option><option value="brown">Brown</option><option value="red">Red</option><option value="gray">Gray</option><option value="neutral">Neutral</option></select></label>
+      <label><span class="sr-only">Filter by tone</span><select id="tone-filter"><option value="all">All Tones</option><option value="light">Light</option><option value="bright">Bright</option><option value="dark">Dark</option></select></label>
+      <label><span class="sr-only">Sort colors</span><select id="sort"><option value="default">Sort by</option><option value="az">Name A–Z</option><option value="za">Name Z–A</option><option value="hue">Hue</option></select></label>
+    </section>
+
+    <section aria-label="Color collection">
+      <div class="color-grid" id="color-grid"></div>
+      <p id="empty" class="empty" hidden>No colors match your search.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div><div class="footer-logo"><span>Color</span> Vision</div><small>see colors a little differently</small></div>
+    <nav aria-label="Footer navigation"><a href="index.html">Home</a> | <a href="color-tools.html">Color Tools</a> | <a href="color-guide.html">Color Guide</a> | <a href="about.html">About</a></nav>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

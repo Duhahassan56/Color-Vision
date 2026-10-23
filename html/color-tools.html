@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Tools - Color Vision</title>
+  <link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">
+  <span style="color: #e83115;">Color</span> <span class="logo-black">Vision</span>
+</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="color-tools.html" class="active">Color Tools</a>
+      <a href="color-guide.html">Color Guide</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  
+  
+  <section class="hero-section">
+    <div class="hero-text">
+      <h1><span style="color: #e83115;">Color</span> <span style="color: #000;">Tools</span></h1>
+      <p>Create balanced color palettes, compare contrast, and explore colors with practical tools.</p>
+    </div>
+    <div class="hero-image">
+      <img src="color-wheel.png" alt="Color Tools Illustration" class="main-illustration">
+    </div>
+  </section>
+
+  
+  <div class="features-container" style="max-width: 950px; margin: 0 auto; padding: 0 20px;">
+   <h3 style="font-size: 18px; color: #7a1e10; margin-bottom: 12px; font-weight: bold;">Why Use Color Tools?</h3>
+  </div>
+
+  
+  <div class="features-list">
+    <div class="feature-item">
+      <img src="generate_icon.png" alt="Palette Icon" class="feature-icon">
+      <span>Create Better Palettes</span>
+    </div>
+    <div class="feature-item">
+      <img src="contrast_icon.png" alt="Contrast Icon" class="feature-icon">
+      <span>Check Contrast</span>
+    </div>
+    <div class="feature-item">
+      <img src="explore_icon.png" alt="Explore Icon" class="feature-icon">
+      <span>Explore with Ease</span>
+    </div>
+  </div>
+
+  
+  <main class="studio-container">
+    <div class="studio-header">
+      <h2><span style="color: #e83115;">Color</span> <span style="color: #000;">Studio</span></h2>
+      <p>Choose a tool to generate matching palettes or check color contrast.</p>
+
+      <div class="tool-tabs">
+        <button class="tab-btn active" id="paletteTabBtn">Palette Generator</button>
+        <button class="tab-btn" id="contrastTabBtn">Contrast Checker</button>
+      </div>
+    </div>
+
+    <div class="tool-panel" id="palettePanel">
+      <label class="input-label">Pick a starting color</label>
+      <div class="color-picker-row">
+        <div class="hex-box">
+          <span>#</span>
+          <input type="text" id="hexInput" value="0C8D90" maxlength="6">
+        </div>
+        <input type="color" id="colorPicker" value="#0C8D90">
+        <button class="action-btn" id="makePaletteBtn">Make My Palette</button>
+      </div>
+
+      <div class="result-section">
+        <h3>Meet Your Palette</h3>
+        <div class="palette-grid" id="paletteResultGrid">
+          <div class="palette-card" style="background-color: #0C8D90; color: #fff;">#0C8D90</div>
+          <div class="palette-card" style="background-color: #7DBE8F;">#7DBE8F</div>
+          <div class="palette-card" style="background-color: #92C5A1;">#92C5A1</div>
+          <div class="palette-card" style="background-color: #E8E5BC;">#E8E5BC</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-panel hidden" id="contrastPanel">
+      <label class="input-label">Pick two colors</label>
+      <div class="contrast-inputs-row">
+        <div class="color-field">
+          <label>Text Color</label>
+          <div class="hex-box">
+            <span>#</span>
+            <input type="text" id="textColorInput" value="000000" maxlength="6">
+          </div>
+          <input type="color" id="textColorPicker" value="#000000">
+        </div>
+
+        <div class="color-field">
+          <label>Background Color</label>
+          <div class="hex-box">
+            <span>#</span>
+            <input type="text" id="bgColorInput" value="FFFFFF" maxlength="6">
+          </div>
+          <input type="color" id="bgColorPicker" value="#FFFFFF">
+        </div>
+      </div>
+
+      <div class="preview-area" id="previewArea">
+        <p class="preview-text">The quick brown fox jumps over the lazy dog.</p>
+      </div>
+
+      <div class="contrast-result-badge" id="contrastBadge">
+        <span class="ratio-text">7.1:1</span>
+        <span class="status-pass">✔ Nice Match!</span>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-logo">Color Vision</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a> | 
+      <a href="color-tools.html">Color Tools</a> | 
+      <a href="color-guide.html">Color Guide</a> | 
+      <a href="about.html">About</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

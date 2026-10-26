@@ -3,14 +3,23 @@ const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('.nav-links');
 
 // Highlight the current page automatically when the shared navbar is reused.
-const currentPage = location.pathname.split('/').pop() || 'index.html';
+
+ // Highlight the current page
+const currentPath = window.location.pathname;
+
 document.querySelectorAll('.nav-links a').forEach(link => {
-  const linkPage = new URL(link.getAttribute('href'), location.href).pathname.split('/').pop();
-  const isCurrent = linkPage === currentPage;
+  const linkPath = new URL(link.href).pathname;
+  const isCurrent = linkPath === currentPath;
+
   link.classList.toggle('active', isCurrent);
-  if (isCurrent) link.setAttribute('aria-current', 'page');
-  else link.removeAttribute('aria-current');
+
+  if (isCurrent) {
+    link.setAttribute('aria-current', 'page');
+  } else {
+    link.removeAttribute('aria-current');
+  }
 });
+
 menuButton.addEventListener('click', () => {
   const opened = navigation.classList.toggle('is-open');
   menuButton.setAttribute('aria-expanded', String(opened));
@@ -30,39 +39,18 @@ const popup = document.getElementById('color-popup');
 const popupName = document.getElementById('popup-name');
 const popupHex = document.getElementById('popup-hex');
 const popupRgb = document.getElementById('popup-rgb');
+
+// Error Popup elements
+const errorBackdrop = document.getElementById('color-error-backdrop');
+const errorDialog = document.getElementById('color-error-dialog');
+const errorClose = document.getElementById('color-error-close');
+
+let previousErrorFocus = null;
+
 // localstorage key name
 const storageKey = 'colorVisionRecentColors';
 
-// palette for stage 3, will remove in stage 4
-const namedColors = [
-  ['Burgundy','#800020'], ['Maroon','#800000'], ['Crimson','#DC143C'], ['Dark Red','#8B0000'],
-  ['Red','#FF0000'], ['Coral','#FF7F50'], ['Tomato','#FF6347'], ['Orange','#FFA500'],
-  ['Burnt Orange','#CC5500'], ['Gold','#FFD700'], ['Mustard','#D4A017'], ['Yellow','#FFFF00'],
-  ['Olive','#808000'], ['Lime Green','#32CD32'], ['Green','#008000'], ['Forest Green','#228B22'],
-  ['Mint Green','#98FF98'], ['Teal','#008080'], ['Turquoise','#40E0D0'], ['Cyan','#00FFFF'],
-  ['Sky Blue','#60A5FA'], ['Light Blue','#ADD8E6'], ['Royal Blue','#4169E1'], ['Blue','#0000FF'],
-  ['Navy Blue','#000080'], ['Indigo','#4B0082'], ['Purple','#800080'], ['Violet','#8F00FF'],
-  ['Lavender Mist','#A78BFA'], ['Lavender','#E6E6FA'], ['Magenta','#FF00FF'],
-  ['Rose Pink','#F472B6'], ['Hot Pink','#FF69B4'], ['Pink','#FFC0CB'], ['Peach','#FFE5B4'],
-  ['Beige','#F5F5DC'], ['Ivory','#FFFFF0'], ['Brown','#A52A2A'], ['Chocolate','#7B3F00'],
-  ['Tan','#D2B48C'], ['White','#FFFFFF'], ['Light Gray','#D3D3D3'], ['Gray','#808080'],
-  ['Charcoal','#36454F'], ['Black','#000000']
-];
-// Find the nearest name from the temporary offline color list
-// In Stage 4,JSON/server lookup can replace this function
-function colorName(r, g, b) {
-  let closest = 'Picked Color';
-  let bestDistance = Infinity;
-  for (const [name, value] of namedColors) {
-    const rr = parseInt(value.slice(1, 3), 16);
-    const gg = parseInt(value.slice(3, 5), 16);
-    const bb = parseInt(value.slice(5, 7), 16);
-    // Weighted RGB distance is a simple approximation, not an exact color naming service
-    const distance = 2 * (r - rr) ** 2 + 4 * (g - gg) ** 2 + 3 * (b - bb) ** 2;
-    if (distance < bestDistance) { bestDistance = distance; closest = name; }
-  }
-  return closest;
-}
+
 // Restore recent colors from browser
 function loadSavedColors() {
   try {
@@ -154,6 +142,42 @@ function showPopup(hex, rgb, name, event) {
 }
 function hidePopup() { popup.hidden = true; }
 
+// Show color recognition error popup
+function showColorError() {
+  previousErrorFocus = document.activeElement;
+
+  hidePopup();
+  errorBackdrop.hidden = false;
+  errorDialog.focus();
+  errorClose.textContent = 'Try again';
+}
+
+// Hide color recognition error popup
+function hideColorError() {
+  errorBackdrop.hidden = true;
+
+  if (previousErrorFocus && typeof previousErrorFocus.focus === 'function') {
+    previousErrorFocus.focus();
+  }
+}
+
+// Close popup using the button
+errorClose.addEventListener('click', hideColorError);
+
+// Close popup using Escape
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && !errorBackdrop.hidden) {
+    hideColorError();
+  }
+
+  // Keep keyboard focus inside the popup
+  if (event.key === 'Tab' && !errorBackdrop.hidden) {
+    event.preventDefault();
+    errorClose.focus();
+  }
+});
+
+
 // drag & drop section
 
 // upload image
@@ -221,23 +245,73 @@ function loadImage(file) {
   image.src = objectUrl;
 }
 
-// Read the clicked pixel, then update popup and recent history
-canvas.addEventListener('click', event => {
+
+ // Read the clicked pixel and request its color name
+canvas.addEventListener('click', async (event) => {
   const bounds = canvas.getBoundingClientRect();
+
   if (!bounds.width || !bounds.height) return;
-  const x = Math.min(canvas.width - 1, Math.max(0, Math.floor((event.clientX - bounds.left) * canvas.width / bounds.width)));
-  const y = Math.min(canvas.height - 1, Math.max(0, Math.floor((event.clientY - bounds.top) * canvas.height / bounds.height)));
-  // read pixels
+
+  const x = Math.min(canvas.width - 1, Math.max(0,
+    Math.floor((event.clientX - bounds.left) * canvas.width / bounds.width)
+  ));
+
+  const y = Math.min(canvas.height - 1, Math.max(0,
+    Math.floor((event.clientY - bounds.top) * canvas.height / bounds.height)
+  ));
+
+  // Get the selected pixel RGB values
   const [r, g, b] = context.getImageData(x, y, 1, 1).data;
-  // from RGB to HEX
-  const hex = '#' + [r, g, b].map(channel => channel.toString(16).padStart(2, '0')).join('').toUpperCase();
-  //  data showen
+
+  // Convert RGB to HEX
+  const hex = '#' + [r, g, b]
+    .map(channel => channel.toString(16).padStart(2, '0'))
+    .join('').toUpperCase();
+
   const rgb = `${r}, ${g}, ${b}`;
-  const name = colorName(r, g, b);
-  selectedColor.textContent = `Selected ${name}: ${hex} | RGB: ${rgb}`;
-  showPopup(hex, rgb, name, event);
-  addRecentColor(hex, rgb, name);
+
+  try {
+    // Send RGB values to the server
+    const response = await fetch('/api/color-name', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ r, g, b })
+    });
+
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      throw new Error('Color recognition failed');
+    }
+
+    // Use the name returned by the server
+    const name = result.name;
+
+    selectedColor.textContent =
+      `Selected ${name}: ${hex} | RGB: ${rgb}`;
+      
+    selectedColor.classList.add('sr-only');
+
+    showPopup(hex, rgb, name, event);
+    addRecentColor(hex, rgb, name);
+ 
+  } catch (error) {
+    console.error('Color recognition error:', error);
+
+    selectedColor.textContent =
+    'Our colors are feeling a little shy right now. Try again!';
+
+    selectedColor.classList.add('sr-only');
+
+    showColorError();
+  }
+
+
+
 });
+
 
 // 3 recent colors
 function addRecentColor(hex, rgb, name) {
@@ -254,8 +328,7 @@ async function copyValue(button) {
   // the copy statement
   try {
     await navigator.clipboard.writeText(value);
-    // Keep the copy icon in the button; do not replace its HTML with text.
-    // Give short feedback using the tooltip instead.
+    // Give short feedback using the tooltip instead
     const originalTitle = button.dataset.originalTitle || button.title;
     button.dataset.originalTitle = originalTitle;
     button.title = 'Copied!';

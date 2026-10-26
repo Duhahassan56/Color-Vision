@@ -18,15 +18,15 @@
   <header class="site-header container">
         <nav class="navbar shadow-box" aria-label="Main navigation">
 		    <!-- logo -->
-            <a class="brand" href="index.html"><span>Color</span> Vision</a>
+            <a class="brand" href="/"><span>Color</span> Vision</a>
 	        <!-- burger menu -->
             <button class="menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">☰</button>
             <div class="nav-links" id="nav-links">
 		        <!-- active btn -->
-                <a class="active" href="index.html" aria-current="page">Home</a>
+                <a class="active" href="/" aria-current="page">Home</a>
                 <a href="color-tools.html">Color Tools</a>
                 <a href="color-guide.html">Color Guide</a>
-                <a href="about.html">About</a>
+                <a href="/about">About</a>
            </div>
        </nav>
   </header>
@@ -95,7 +95,7 @@
 			            <!-- read colors by canvas -->
                         <canvas id="image-canvas" aria-label="Uploaded image for selecting a color"></canvas>
                    </div>
-                        <p id="selected-color" class="sr-only" role="status" aria-live="polite">Select a color from the image</p>
+                        <p id="selected-color" class="sr-only" role="status" aria-live="polite"></p>
                 </div>
 		        <!-- img types that allowed -->
                 <input id="image-input" type="file" accept="image/jpeg,image/png,image/webp" hidden>
@@ -142,17 +142,40 @@
     <footer class="site-footer">
         <div class="container footer-content">
             <div>
-		        <a class="brand footer-brand" href="index.html"><span>Color</span> Vision</a>
+		        <a class="brand footer-brand" href="/"><span>Color</span> Vision</a>
 		        <p>see colors a little differently</p>
 	        </div>
             <nav class="footer-links" aria-label="Footer navigation">
-		        <a href="index.html">Home</a>
+		        <a href="/">Home</a>
 		        <a href="color-tools.html">Color Tools</a>
 		        <a href="color-guide.html">Color Guide</a>
-		        <a href="about.html">About</a>
+		        <a href="/about">About</a>
 	        </nav>
         </div>
         <p class="footer-note">Built as a Server-Side 2 university Project</p>
     </footer>
+    
+    <!-- Color Recognition Error Popup -->
+    <div id="color-error-backdrop" class="error-backdrop" hidden>
+      <div
+          id="color-error-dialog"
+          class="error-dialog shadow-box"
+          role="alertdialog"
+          aria-modal="true"
+          aria-labelledby="color-error-title"
+          aria-describedby="color-error-message"
+          tabindex="-1">
+          <img class="error-dialog-icon" src="/contact/icons/patch-exclamation.png" alt="">
+
+          <h2 id="color-error-title">Oops! Color Magic on Pause!</h2>
+
+          <p id="color-error-message">Our colors are feeling a little shy right now. Try again!</p>
+
+          
+          <button id="color-error-close" class="button" type="button">Try again</button>
+
+        </div>
+   </div>
+
 </body>
 </html>

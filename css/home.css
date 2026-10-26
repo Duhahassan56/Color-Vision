@@ -158,3 +158,54 @@ transform: rotate(-12deg); }
 
 /* keep the original icon visible after click it */
 .copy-button.copy-success img { opacity: 0.6; }
+
+/* Color recognition error popup */
+.error-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.28);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  z-index: 100;
+}
+
+.error-backdrop[hidden] {
+  display: none;
+}
+
+.error-dialog {
+  width: min(100%, 510px);
+  text-align: center;
+  padding: 30px 36px 34px;
+}
+
+.error-dialog-icon {
+  display: block;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin: 0 auto 13px;
+}
+
+.error-dialog h2 {
+  font-size: clamp(24px, 2.4vw, 34px);
+  margin: 0 0 8px;
+}
+
+.error-dialog p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0 0 23px;
+}
+
+
+.error-dialog .button {
+  min-width: 165px;
+  font-size: clamp(19px, 1.55vw, 24px);
+  color: #FFF8E1;
+  font-weight: 700;
+  opacity: 1;
+  visibility: visible;
+}
+

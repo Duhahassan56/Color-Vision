@@ -4,7 +4,7 @@ const path = require("path");
 // routes call
 const homeRoutes = require("./routes/homeRoutes");
 const aboutRoutes = require("./routes/aboutRoutes");
-
+const colorGuideRoutes = require("./routes/colorGuideRoutes");
 
 const app = express();
 const PORT = 3000;
@@ -22,6 +22,7 @@ app.use("/contact", express.static(path.join(__dirname, "..", "contact")));
 // connect page routes
 app.use("/", homeRoutes);
 app.use("/", aboutRoutes);
+app.use("/", colorGuideRoutes);
 
 
 // start the server

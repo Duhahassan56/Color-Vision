@@ -15,13 +15,13 @@
   <!-- Shared navigation: matches Home and About. -->
   <header class="site-header container">
     <nav class="navbar shadow-box" aria-label="Main navigation">
-      <a class="brand" href="index.html"><span>Color</span> Vision</a>
+      <a class="brand" href="/"><span>Color</span> Vision</a>
       <button class="menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">☰</button>
       <div class="nav-links" id="nav-links">
-        <a href="index.html">Home</a>
-        <a class="active" href="color-tools.html" aria-current="page">Color Tools</a>
-        <a href="color-guide.html">Color Guide</a>
-        <a href="about.html">About</a>
+        <a href="/">Home</a>
+        <a class="active" href="/color-tools" aria-current="page">Color Tools</a>
+        <a href="/color-guide">Color Guide</a>
+        <a href="/about">About</a>
       </div>
     </nav>
   </header>
@@ -87,11 +87,14 @@
               <h3>Pick a starting color</h3>
               <p>Enter a HEX code or choose a color to find matching shades.</p>
               <div class="tool-input-row">
-                <div class="hex-input-wrap"><span aria-hidden="true">#</span><input id="palette-hex" aria-label="Palette starting HEX color" type="text" placeholder="0C8D90" maxlength="7" spellcheck="false" inputmode="text"></div>
+                <div class="hex-input-wrap">
+                  <span aria-hidden="true">#</span>
+                  <input id="palette-hex" aria-label="Palette starting HEX color" type="text" placeholder="0C8D90" maxlength="7" spellcheck="false" inputmode="text">
+                </div>
                 <input id="palette-picker" class="native-color" type="color" value="#0C8D90" aria-label="Choose palette starting color">
                 <button id="generate-palette" class="button tool-action" type="button">Make My Palette</button>
               </div>
-              <p id="palette-error" class="input-error" role="alert" hidden>Please enter a valid six-digit HEX color.</p>
+              <p id="palette-error" class="input-error" role="alert" hidden>Oops! This color needs six little HEX digits to work its magic!</p>
               <h3 class="result-heading">Meet Your Palette</h3>
               <div id="palette-empty" class="palette-empty" aria-live="polite"><img src="../contact/icons/paint_icon.png" alt=""><p>Your matching colors will show up here.</p></div>
               <div id="palette-results" class="palette-results" aria-live="polite" hidden></div>
@@ -102,18 +105,48 @@
               <h3>Pick two colors</h3>
               <p>Choose a text color and a background color to see how well they work together.</p>
               <div class="contrast-inputs">
-                <div class="contrast-color-field"><label for="text-hex">Text Color</label><div class="color-pair"><div class="hex-input-wrap"><span aria-hidden="true">#</span><input id="text-hex" type="text" placeholder="4E3B2B" maxlength="7" spellcheck="false"></div><input id="text-picker" class="native-color" type="color" value="#4E3B2B" aria-label="Choose text color"></div></div>
-                <div class="contrast-color-field"><label for="background-hex">Background Color</label><div class="color-pair"><div class="hex-input-wrap"><span aria-hidden="true">#</span><input id="background-hex" type="text" placeholder="FFF6DE" maxlength="7" spellcheck="false"></div><input id="background-picker" class="native-color" type="color" value="#FFF6DE" aria-label="Choose background color"></div></div>
+                <div class="contrast-color-field">
+                  <label for="text-hex">Text Color</label>
+                  <div class="color-pair">
+                    <div class="hex-input-wrap">
+                      <span aria-hidden="true">#</span>
+                      <input id="text-hex" type="text" placeholder="4E3B2B" maxlength="7" spellcheck="false">
+                    </div>
+                    <input id="text-picker" class="native-color" type="color" value="#4E3B2B" aria-label="Choose text color">
+                  </div>
+                </div>
+                <div class="contrast-color-field">
+                  <label for="background-hex">Background Color</label>
+                  <div class="color-pair">
+                    <div class="hex-input-wrap">
+                      <span aria-hidden="true">#</span>
+                      <input id="background-hex" type="text" placeholder="FFF6DE" maxlength="7" spellcheck="false">
+                    </div>
+                    <input id="background-picker" class="native-color" type="color" value="#FFF6DE" aria-label="Choose background color">
+                  </div>
+                </div>
               </div>
               <button id="check-contrast" class="button tool-action contrast-action" type="button">Check My Contrast</button>
-              <p id="contrast-error" class="input-error" role="alert" hidden>Please enter a valid six-digit HEX color for both fields.</p>
-              <h3 id="contrast-preview-heading" class="result-heading" hidden>Preview</h3>
-              <div id="contrast-preview" class="contrast-preview" hidden><strong id="preview-lead"></strong><span id="preview-detail"></span></div>
+              <p id="contrast-error" class="input-error" role="alert" hidden>Two colors, please! Give us a pair of six-digit HEX codes to compare.</p>
+              <h3 id="preview-heading" class="result-heading" hidden>Preview</h3>
+              <div id="contrast-preview" class="contrast-preview" hidden>
+                <strong id="preview-title"></strong>
+                <span id="preview-subtitle"></span>
+              </div>
               <h3 class="result-heading">How’s the Match?</h3>
               <div id="contrast-empty" class="contrast-empty">Your contrast result will appear here.</div>
               <div id="contrast-results" class="contrast-results" aria-live="polite" hidden>
-                <div class="contrast-number"><strong id="contrast-ratio">—</strong><span>Contrast ratio</span></div>
-                <div class="contrast-verdict"><img id="contrast-icon" src="../contact/icons/patch-check.png" alt=""><div><strong id="contrast-title">Nice Match!</strong><p id="contrast-description"></p></div></div>
+                <div class="contrast-number">
+                  <strong id="contrast-ratio">—</strong>
+                  <span>Contrast ratio</span>
+                </div>
+                <div class="contrast-verdict">
+                  <img id="contrast-icon" src="../contact/icons/patch-check.png" alt="">
+                  <div>
+                    <strong id="contrast-title">Nice Match!</strong>
+                    <p id="contrast-description"></p>
+                  </div>
+                </div>
               </div>
             </section>
           </div>
@@ -123,6 +156,19 @@
   </main>
 
   <!-- Shared footer. -->
-  <footer class="site-footer tools-footer"><div class="container footer-content"><div><a class="brand footer-brand" href="index.html"><span>Color</span> Vision</a><p>see colors a little differently</p></div><nav class="footer-links" aria-label="Footer navigation"><a href="index.html">Home</a><a href="color-tools.html">Color Tools</a><a href="color-guide.html">Color Guide</a><a href="about.html">About</a></nav></div><p class="footer-note">Built as a Server-Side 2 university Project</p></footer>
+  <footer class="site-footer tools-footer">
+    <div class="container footer-content"><div>
+      <a class="brand footer-brand" href="/"><span>Color</span> Vision</a>
+      <p>see colors a little differently</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="/">Home</a>
+      <a href="/color-tools">Color Tools</a>
+      <a href="/color-guide">Color Guide</a>
+      <a href="/about">About</a>
+    </nav>
+  </div>
+  <p class="footer-note">Built as a Server-Side 2 university Project</p>
+</footer>
 </body>
 </html>

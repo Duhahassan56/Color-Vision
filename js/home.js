@@ -44,6 +44,8 @@ const popupRgb = document.getElementById('popup-rgb');
 const errorBackdrop = document.getElementById('color-error-backdrop');
 const errorDialog = document.getElementById('color-error-dialog');
 const errorClose = document.getElementById('color-error-close');
+const errorTitle = document.getElementById('color-error-title');
+const errorMessage = document.getElementById('color-error-message');
 
 let previousErrorFocus = null;
 
@@ -143,13 +145,21 @@ function showPopup(hex, rgb, name, event) {
 function hidePopup() { popup.hidden = true; }
 
 // Show color recognition error popup
-function showColorError() {
+function showColorError({
+  title = 'Oops! Color Magic on Pause!',
+  message = 'Our colors are feeling a little shy right now. Try again!',
+  button = 'Try again',
+  large = false
+} = {}) {
   previousErrorFocus = document.activeElement;
+  errorTitle.textContent = title;
+  errorMessage.textContent = message;
+  errorClose.textContent = button;
+  errorDialog.classList.toggle('upload-error-dialog', large);
 
   hidePopup();
   errorBackdrop.hidden = false;
   errorDialog.focus();
-  errorClose.textContent = 'Try again';
 }
 
 // Hide color recognition error popup
@@ -208,8 +218,18 @@ fileInput.addEventListener('change', () => {
 dropZone.addEventListener('drop', event => {
   const file = [...event.dataTransfer.files].find(isSupportedImage);
   if (file) loadImage(file);
-  else alert('Please choose a JPG, PNG or WebP image.');
+  else showInvalidImageError();
 });
+
+// Keep upload errors consistent with the site's custom error dialog and icon.
+function showInvalidImageError() {
+  showColorError({
+    title: 'Not Quite an Image!',
+    message: 'This file isn’t on our palette. Try a JPG, PNG, or WebP instead!',
+    button: 'Got it!',
+    large: true
+  });
+}
 
 // check file type
 function isSupportedImage(file) {
@@ -219,7 +239,7 @@ function isSupportedImage(file) {
 // Show the chosen file on the canvas
 function loadImage(file) {
   if (!isSupportedImage(file)) {
-    alert('Please choose a JPG, PNG or WebP image.');
+    showInvalidImageError();
     return;
   }
   // make URL of image for the browser
@@ -240,7 +260,12 @@ function loadImage(file) {
   // if falied to load the image
   image.onerror = () => {
     URL.revokeObjectURL(objectUrl);
-    alert('Could not open this image.');
+    showColorError({
+      title: 'Oops! This Image Won’t Open!',
+      message: 'This one didn’t make it onto our canvas. Try another image!',
+      button: 'Got it!',
+      large: true
+    });
   };
   image.src = objectUrl;
 }

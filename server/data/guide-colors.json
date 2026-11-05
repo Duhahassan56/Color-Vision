@@ -1,0 +1,602 @@
+[
+  {
+    "name": "Sky Blue",
+    "hex": "#60A5FA",
+    "family": "blue",
+    "tone": "bright"
+  },
+  {
+    "name": "Rose Pink",
+    "hex": "#F472B6",
+    "family": "pink",
+    "tone": "soft"
+  },
+  {
+    "name": "Lavender Mist",
+    "hex": "#A78BFA",
+    "family": "purple",
+    "tone": "soft"
+  },
+  {
+    "name": "Honey Gold",
+    "hex": "#EAB308",
+    "family": "yellow",
+    "tone": "bright"
+  },
+  {
+    "name": "Teal Tide",
+    "hex": "#14B8A6",
+    "family": "green",
+    "tone": "bright"
+  },
+  {
+    "name": "Coral Pop",
+    "hex": "#F97316",
+    "family": "orange",
+    "tone": "bright"
+  },
+  {
+    "name": "Sage Green",
+    "hex": "#84CC16",
+    "family": "green",
+    "tone": "bright"
+  },
+  {
+    "name": "Cocoa Brown",
+    "hex": "#7C4A2D",
+    "family": "brown",
+    "tone": "dark"
+  },
+  {
+    "name": "Vanilla Cream",
+    "hex": "#FFF7ED",
+    "family": "neutral",
+    "tone": "light"
+  },
+  {
+    "name": "Ocean Depth",
+    "hex": "#2563EB",
+    "family": "blue",
+    "tone": "dark"
+  },
+  {
+    "name": "Peach Fuzz",
+    "hex": "#FDBA74",
+    "family": "orange",
+    "tone": "light"
+  },
+  {
+    "name": "Plum Dream",
+    "hex": "#A855F7",
+    "family": "purple",
+    "tone": "bright"
+  },
+  {
+    "name": "Mint Leaf",
+    "hex": "#6EE7B7",
+    "family": "green",
+    "tone": "light"
+  },
+  {
+    "name": "Ruby Red",
+    "hex": "#DC2626",
+    "family": "red",
+    "tone": "bright"
+  },
+  {
+    "name": "Lemon Glow",
+    "hex": "#FDE047",
+    "family": "yellow",
+    "tone": "light"
+  },
+  {
+    "name": "Slate Gray",
+    "hex": "#64748B",
+    "family": "neutral",
+    "tone": "soft"
+  },
+  {
+    "name": "Azure Breeze",
+    "hex": "#38BDF8",
+    "family": "blue",
+    "tone": "bright"
+  },
+  {
+    "name": "Midnight Navy",
+    "hex": "#1E3A8A",
+    "family": "blue",
+    "tone": "dark"
+  },
+  {
+    "name": "Powder Blue",
+    "hex": "#BFDBFE",
+    "family": "blue",
+    "tone": "light"
+  },
+  {
+    "name": "Cobalt Flash",
+    "hex": "#1D4ED8",
+    "family": "blue",
+    "tone": "bright"
+  },
+  {
+    "name": "Ice Lagoon",
+    "hex": "#A5F3FC",
+    "family": "blue",
+    "tone": "light"
+  },
+  {
+    "name": "Blush Petal",
+    "hex": "#FBCFE8",
+    "family": "pink",
+    "tone": "light"
+  },
+  {
+    "name": "Berry Bloom",
+    "hex": "#DB2777",
+    "family": "pink",
+    "tone": "bright"
+  },
+  {
+    "name": "Dusty Rose",
+    "hex": "#BE8A9A",
+    "family": "pink",
+    "tone": "soft"
+  },
+  {
+    "name": "Bubblegum",
+    "hex": "#F9A8D4",
+    "family": "pink",
+    "tone": "light"
+  },
+  {
+    "name": "Iris Purple",
+    "hex": "#7C3AED",
+    "family": "purple",
+    "tone": "bright"
+  },
+  {
+    "name": "Wisteria",
+    "hex": "#C4B5FD",
+    "family": "purple",
+    "tone": "light"
+  },
+  {
+    "name": "Deep Amethyst",
+    "hex": "#581C87",
+    "family": "purple",
+    "tone": "dark"
+  },
+  {
+    "name": "Orchid Haze",
+    "hex": "#D8B4FE",
+    "family": "purple",
+    "tone": "soft"
+  },
+  {
+    "name": "Sunflower",
+    "hex": "#FACC15",
+    "family": "yellow",
+    "tone": "bright"
+  },
+  {
+    "name": "Buttermilk",
+    "hex": "#FEF3C7",
+    "family": "yellow",
+    "tone": "light"
+  },
+  {
+    "name": "Amber Sunset",
+    "hex": "#D97706",
+    "family": "yellow",
+    "tone": "dark"
+  },
+  {
+    "name": "Golden Sand",
+    "hex": "#FCD34D",
+    "family": "yellow",
+    "tone": "soft"
+  },
+  {
+    "name": "Forest Fern",
+    "hex": "#166534",
+    "family": "green",
+    "tone": "dark"
+  },
+  {
+    "name": "Emerald Bay",
+    "hex": "#059669",
+    "family": "green",
+    "tone": "bright"
+  },
+  {
+    "name": "Pistachio",
+    "hex": "#D9F99D",
+    "family": "green",
+    "tone": "light"
+  },
+  {
+    "name": "Olive Grove",
+    "hex": "#65743A",
+    "family": "green",
+    "tone": "soft"
+  },
+  {
+    "name": "Sea Glass",
+    "hex": "#99F6E4",
+    "family": "green",
+    "tone": "light"
+  },
+  {
+    "name": "Tangerine",
+    "hex": "#FB923C",
+    "family": "orange",
+    "tone": "bright"
+  },
+  {
+    "name": "Apricot Glow",
+    "hex": "#FED7AA",
+    "family": "orange",
+    "tone": "light"
+  },
+  {
+    "name": "Burnt Orange",
+    "hex": "#C2410C",
+    "family": "orange",
+    "tone": "dark"
+  },
+  {
+    "name": "Cantaloupe",
+    "hex": "#FDBA8C",
+    "family": "orange",
+    "tone": "soft"
+  },
+  {
+    "name": "Mocha Latte",
+    "hex": "#A16207",
+    "family": "brown",
+    "tone": "dark"
+  },
+  {
+    "name": "Hazelnut",
+    "hex": "#B88B67",
+    "family": "brown",
+    "tone": "soft"
+  },
+  {
+    "name": "Sandstone",
+    "hex": "#E7C9A9",
+    "family": "brown",
+    "tone": "light"
+  },
+  {
+    "name": "Cloud White",
+    "hex": "#F8FAFC",
+    "family": "neutral",
+    "tone": "light"
+  },
+  {
+    "name": "Charcoal Ink",
+    "hex": "#334155",
+    "family": "neutral",
+    "tone": "dark"
+  },
+  {
+    "name": "Silver Fog",
+    "hex": "#CBD5E1",
+    "family": "neutral",
+    "tone": "soft"
+  },
+  {
+    "name": "Cherry Burst",
+    "hex": "#EF4444",
+    "family": "red",
+    "tone": "bright"
+  },
+  {
+    "name": "Brick Red",
+    "hex": "#991B1B",
+    "family": "red",
+    "tone": "dark"
+  },
+  {
+    "name": "Bluebell Breeze",
+    "hex": "#93C5FD",
+    "family": "blue",
+    "tone": "light"
+  },
+  {
+    "name": "Midnight Navy Glow",
+    "hex": "#172554",
+    "family": "blue",
+    "tone": "dark"
+  },
+  {
+    "name": "Arctic Blue",
+    "hex": "#D6E8FE",
+    "family": "blue",
+    "tone": "light"
+  },
+  {
+    "name": "Electric Cobalt",
+    "hex": "#2A5AE2",
+    "family": "blue",
+    "tone": "bright"
+  },
+  {
+    "name": "Denim Daydream",
+    "hex": "#6F7F97",
+    "family": "blue",
+    "tone": "soft"
+  },
+  {
+    "name": "Cotton Candy",
+    "hex": "#FABDDF",
+    "family": "pink",
+    "tone": "light"
+  },
+  {
+    "name": "Bubblegum Pop",
+    "hex": "#EC4899",
+    "family": "pink",
+    "tone": "bright"
+  },
+  {
+    "name": "Dusty Rose Glow",
+    "hex": "#BE718A",
+    "family": "pink",
+    "tone": "soft"
+  },
+  {
+    "name": "Blush Petal Glow",
+    "hex": "#FDE4F2",
+    "family": "pink",
+    "tone": "light"
+  },
+  {
+    "name": "Berry Kiss",
+    "hex": "#9D174D",
+    "family": "pink",
+    "tone": "dark"
+  },
+  {
+    "name": "Lilac Cloud",
+    "hex": "#DDD6FE",
+    "family": "purple",
+    "tone": "light"
+  },
+  {
+    "name": "Grape Soda",
+    "hex": "#8A4FEF",
+    "family": "purple",
+    "tone": "bright"
+  },
+  {
+    "name": "Twilight Violet",
+    "hex": "#5B21B6",
+    "family": "purple",
+    "tone": "dark"
+  },
+  {
+    "name": "Orchid Whisper",
+    "hex": "#D6CBFE",
+    "family": "purple",
+    "tone": "soft"
+  },
+  {
+    "name": "Amethyst Glow",
+    "hex": "#9333EA",
+    "family": "purple",
+    "tone": "bright"
+  },
+  {
+    "name": "Lemon Sorbet",
+    "hex": "#FEF08A",
+    "family": "yellow",
+    "tone": "light"
+  },
+  {
+    "name": "Golden Hour",
+    "hex": "#F59E0B",
+    "family": "yellow",
+    "tone": "bright"
+  },
+  {
+    "name": "Dandelion Wish",
+    "hex": "#FDE45E",
+    "family": "yellow",
+    "tone": "light"
+  },
+  {
+    "name": "Mustard Seed",
+    "hex": "#B76F08",
+    "family": "yellow",
+    "tone": "dark"
+  },
+  {
+    "name": "Buttercup Glow",
+    "hex": "#FAD12B",
+    "family": "yellow",
+    "tone": "bright"
+  },
+  {
+    "name": "Pistachio Puff",
+    "hex": "#E1FAB3",
+    "family": "green",
+    "tone": "light"
+  },
+  {
+    "name": "Forest Picnic",
+    "hex": "#1A783E",
+    "family": "green",
+    "tone": "dark"
+  },
+  {
+    "name": "Sea Glass Glow",
+    "hex": "#AEF8EA",
+    "family": "green",
+    "tone": "light"
+  },
+  {
+    "name": "Clover Patch",
+    "hex": "#22C55E",
+    "family": "green",
+    "tone": "bright"
+  },
+  {
+    "name": "Eucalyptus Haze",
+    "hex": "#A7C4B5",
+    "family": "green",
+    "tone": "soft"
+  },
+  {
+    "name": "Apricot Jam",
+    "hex": "#FEE2C1",
+    "family": "orange",
+    "tone": "light"
+  },
+  {
+    "name": "Tangerine Tango",
+    "hex": "#FB9F52",
+    "family": "orange",
+    "tone": "bright"
+  },
+  {
+    "name": "Pumpkin Spice",
+    "hex": "#D8480D",
+    "family": "orange",
+    "tone": "dark"
+  },
+  {
+    "name": "Sunset Sherbet",
+    "hex": "#FDC8A3",
+    "family": "orange",
+    "tone": "soft"
+  },
+  {
+    "name": "Marmalade Glow",
+    "hex": "#EA580C",
+    "family": "orange",
+    "tone": "bright"
+  },
+  {
+    "name": "Cinnamon Roll",
+    "hex": "#B45309",
+    "family": "brown",
+    "tone": "dark"
+  },
+  {
+    "name": "Toffee Twist",
+    "hex": "#D6A77A",
+    "family": "brown",
+    "tone": "soft"
+  },
+  {
+    "name": "Mocha Morning",
+    "hex": "#713F12",
+    "family": "brown",
+    "tone": "dark"
+  },
+  {
+    "name": "Caramel Drizzle",
+    "hex": "#F0C48A",
+    "family": "brown",
+    "tone": "light"
+  },
+  {
+    "name": "Walnut Woods",
+    "hex": "#854D0E",
+    "family": "brown",
+    "tone": "dark"
+  },
+  {
+    "name": "Pearl Linen",
+    "hex": "#FAF7F0",
+    "family": "neutral",
+    "tone": "light"
+  },
+  {
+    "name": "Misty Pebble",
+    "hex": "#D4D4D8",
+    "family": "neutral",
+    "tone": "light"
+  },
+  {
+    "name": "Soft Graphite",
+    "hex": "#52525B",
+    "family": "neutral",
+    "tone": "dark"
+  },
+  {
+    "name": "Oat Milk",
+    "hex": "#E7E5E4",
+    "family": "neutral",
+    "tone": "soft"
+  },
+  {
+    "name": "Stormy Slate",
+    "hex": "#475569",
+    "family": "neutral",
+    "tone": "dark"
+  },
+  {
+    "name": "Strawberry Splash",
+    "hex": "#FB7185",
+    "family": "red",
+    "tone": "bright"
+  },
+  {
+    "name": "Ruby Ribbon",
+    "hex": "#BE123C",
+    "family": "red",
+    "tone": "dark"
+  },
+  {
+    "name": "Watermelon Wink",
+    "hex": "#FDA4AF",
+    "family": "red",
+    "tone": "light"
+  },
+  {
+    "name": "Crimson Velvet",
+    "hex": "#881337",
+    "family": "red",
+    "tone": "dark"
+  },
+  {
+    "name": "Poppy Parade",
+    "hex": "#F43F5E",
+    "family": "red",
+    "tone": "bright"
+  },
+  {
+    "name": "Icy Lagoon",
+    "hex": "#67E8F9",
+    "family": "blue",
+    "tone": "bright"
+  },
+  {
+    "name": "Pink Lemonade",
+    "hex": "#FBC4D8",
+    "family": "pink",
+    "tone": "light"
+  },
+  {
+    "name": "Purple Macaron",
+    "hex": "#E9D5FF",
+    "family": "purple",
+    "tone": "light"
+  },
+  {
+    "name": "Honey Butter",
+    "hex": "#FDE68A",
+    "family": "yellow",
+    "tone": "light"
+  },
+  {
+    "name": "Mossy Meadow",
+    "hex": "#4D7C0F",
+    "family": "green",
+    "tone": "dark"
+  }
+]

@@ -86,3 +86,20 @@
     box-shadow: 7px 7px 0 #000;
     outline: none;
 }
+/* Friendly retry action, visible only after a server error. */
+.guide-retry { display: block; margin: 0 auto 25px; cursor: pointer; }
+.guide-retry[hidden] { display: none; }
+
+#no-results h3 {
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0 0 10px;
+}
+
+#no-results p {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.2;
+  margin: 0;
+}
